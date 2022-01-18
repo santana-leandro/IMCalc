@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View , Text, TextInput, Button } from "react-native";
+import { View , Text, TextInput, TouchableOpacity } from "react-native";
 import Resultimc from "./resultimc/"
+import Styles from "./style"
 export default function Form(){
 
     const [height, setHeight] = useState(null)
@@ -28,27 +29,34 @@ export default function Form(){
     }
 
     return(
-        <View>
-            <View>
-                <Text>Altura</Text>
+        <View style={Styles.FormContext}>
+            <View style={Styles.form}>
+                <Text style={Styles.formLabel}>Altura</Text>
                 <TextInput
+                style={Styles.input}
                 onChangeText={setHeight}
                 value = {height}
                 placeholder="Ex. 1.75"
                 keyboardType="numeric"
                 ></TextInput>
                 
-                <Text>Peso</Text>
+                <Text style={Styles.formLabel}>Peso</Text>
                 <TextInput
+                style={Styles.input}
                 onChangeText={setWeight}
                 value = {weight}
                 placeholder="Ex. 75.365"
                 keyboardType="numeric"
                 ></TextInput>
 
-                <Button 
-                onPress={() => validationImc()}
-                title={textButton}></Button>
+                <TouchableOpacity
+                    style={Styles.buttonCalculator}
+                    onPress={() => {
+                        validationImc()
+                    }}
+                >
+                    <Text style={Styles.textButtonCalculator}>{textButton}</Text>
+                </TouchableOpacity>
 
             </View>
             <View>
